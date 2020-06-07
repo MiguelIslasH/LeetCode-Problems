@@ -1,0 +1,9 @@
+class Solution:
+    def shuffle(self, nums: List[int], n: int) -> List[int]:
+        orderedNumbers = []
+        auxIndex = n
+        for index in range(n):
+            orderedNumbers.append(nums[index])
+            orderedNumbers.append(nums[index+auxIndex]) 
+        return orderedNumbers
+            
