@@ -1,0 +1,23 @@
+class UndergroundSystem:
+
+    def __init__(self):
+        self.checkInLog = {}
+        self.timeTraveling = {}
+
+    def checkIn(self, id: int, stationName: str, t: int) -> None:
+        self.checkInLog[id] = [stationName, t]
+
+    def checkOut(self, id: int, stationName: str, t: int) -> None:
+        startStationName = self.checkInLog[id][0]
+        startStationTime = self.checkInLog[id][1]
+        
+        if self.timeTraveling.get(startStationName+':'+stationName) == None:
+            self.timeTraveling[startStationName+':'+stationName] = [t -startStationTime]
+        else: 
+            self.timeTraveling[startStationName+':'+stationName].append(t -startStationTime)
+
+    def getAverageTime(self, startStation: str, endStation: str) -> float:
+        values = self.timeTraveling[startStation+':'+endStation]
+        length = len(self.timeTraveling[startStation+':'+endStation])
+        return sum(values)/length
+        
