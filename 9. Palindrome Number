@@ -1,0 +1,21 @@
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        """
+            12344321
+            12321
+            
+            Time: O(n/2); n = length of number
+            Memory: O(1)
+        """
+        stringifyNumber = str(x)
+        pointer1 = 0
+        pointer2 = len(stringifyNumber) - 1
+        isPalindrome = True
+        
+        while pointer1 < pointer2:
+            if stringifyNumber[pointer1] != stringifyNumber[pointer2]:
+                isPalindrome = False
+            pointer1 += 1
+            pointer2 -= 1
+            
+        return isPalindrome
